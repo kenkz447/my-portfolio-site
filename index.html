@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tungnt.dev</title>
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <style>
+    body {
+      background-color: black;
+      text-align: center;
+      color: #fff;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a {
+      color: white;
+    }
+
+    .root {
+      overflow: hidden;
+      padding-top: 100px;
+    }
+
+    .background>* {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .layer-overlay {
+      background-color: #000;
+      opacity: 0.5;
+    }
+
+    .layer-pattern {
+      opacity: 0.8;
+      background: url(assets/pattern.png);
+      background-repeat: repeat;
+    }
+
+    .layer-background {
+      background: url(assets/FGM_STILL_04.jpg);
+      background-size: cover;
+      height: 100%;
+      background-position: center;
+      transform: scale(1.1);
+    }
+
+    .layer-1 {
+      background-color: transparent;
+      position: fixed;
+    }
+
+    .logo {
+      margin: 0 auto;
+      margin-bottom: 24px;
+    }
+
+    .main-content {
+      text-transform: uppercase;
+      font-size: 33px;
+      font-weight: 900;
+    }
+
+    .divider {
+      width: 100px;
+      height: 1px;
+      background-color: #fff;
+      margin: 0 auto;
+      margin-bottom: 18px;
+    }
+
+    .icon {
+      width: 40px;
+    }
+
+    .content {
+      position: relative;
+    }
+
+    #content>* {
+      transform: rotate3d(1, 0, 0, 90deg);
+      transition: ease-in-out 0.2s;
+    }
+
+    #blackScreen {
+      background: #000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transition: ease-in-out 0.5s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #loadingScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transition: ease 1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .lds-ripple {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .lds-ripple div {
+      position: absolute;
+      border: 4px solid #fff;
+      opacity: 1;
+      border-radius: 50%;
+      animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    .lds-ripple div:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+
+    @keyframes lds-ripple {
+      0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+
+      100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="root">
+    <div class="background">
+      <div id="scene">
+        <div data-depth="0.2" style="height: 100%">
+          <div class="layer-background"></div>
+        </div>
+      </div>
+      <div class="layer-overlay"></div>
+      <div class="layer-pattern"></div>
+      <canvas id="bgEffect" class="layer-1" width="800" height="800"></canvas>
+    </div>
+    <div id="content" class="content">
+      <div id="content-t1" class="logo">
+        <h1 style="font-family: 'Pacifico', cursive;">Nguyen Tung</h1>
+      </div>
+      <p id="content-t2" style="font-family: 'Varela Round', sans-serif;">
+        No Frontend, no Backend, but Weekend! <br>
+        Because I am a:
+      </p>
+      <p id="content-t3" class="main-content">
+        <span> Full-stack </span>
+        <span style="color: orange; font-weight: 300">Overflow</span>
+        <br />
+        <span> Developer </span>
+      </p>
+      <div id="content-t4" class="divider"></div>
+      <div id="content-t5" style="display: flex; justify-content: center; align-items: flex-end; gap: 8px;">
+        <div  class="icon">
+          <a class="email" href="mailto:tungnguyen247online@gmail.com">
+            <img src="assets/email.svg" alt="email" style="margin-right: 12px" />
+          </a>
+        </div>
+        <div  class="icon">
+          <a class="email" href="https://www.facebook.com/nguyentung8250" target="_blank">
+            <img src="assets/facebook.svg" alt="email" style="margin-right: 12px" />
+          </a>
+        </div>
+        <div  class="icon">
+          <a class="email" href="https://www.linkedin.com/in/kenkz447" target="_blank">
+            <img src="assets/linkedin.svg" alt="email" style="margin-right: 12px" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="blackScreen"></div>
+  <div id="loadingScreen">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="assets/parallax.min.js"></script>
+  <script src="assets/bg-effect.js"></script>
+  <script>
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene);
+  </script>
+  <script>
+    window.onload = (e) => {
+      setTimeout(() => {
+        const blackScreen = document.getElementById('blackScreen');
+        blackScreen.style.height = '0px';
+      }, 1000);
+
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        loadingScreen.style.opacity = '0';
+
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }, 300);
+
+      setTimeout(() => {
+        setTimeout(() => {
+          const contentT = document.getElementById('content-t1');
+          contentT.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        }, 300);
+        setTimeout(() => {
+          const contentT = document.getElementById('content-t2');
+          contentT.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        }, 500);
+        setTimeout(() => {
+          const contentT = document.getElementById('content-t3');
+          contentT.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        }, 700);
+        setTimeout(() => {
+          const contentT = document.getElementById('content-t4');
+          contentT.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        }, 900);
+        setTimeout(() => {
+          const contentT = document.getElementById('content-t5');
+          contentT.style.transition = 'ease-in-out .5s';
+          contentT.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        }, 1300);
+        setTimeout(() => {
+          const contentT = document.getElementById('content-t6');
+          contentT.style.transition = 'ease-in-out .5s';
+          contentT.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        }, 1500);
+      }, 1500);
+    };
+  </script>
+</body>
+
+</html>
